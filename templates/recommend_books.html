@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+    {% block name %}
+    <html>
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h1 class="text-white" style="font-size:50px">Recommend Books</h1>
+                        <form action="/recommend_books" method="POST">
+                            <input name="user_input" type="text" class="form-control"><br>
+                            <input type="submit" class="btn btn-lg btn-warning">
+                        </form>
+
+                    </div>
+
+                    {% if data %}
+
+                    {% for i in data %}
+                        <div class="col-md-3" style="margin-top:50px">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top" src="{{i[0]}}">
+                                    <h3 class="text-white">{{i[1]}}</h3>
+                                    <h4 class="text-white">Author : {{i[2]}}</h4>
+                                    <h4 class="text-white">Year : {{i[3]}}</h4>
+                                    <h4 class="text-white">Votes : {{i[4]}}</h4>
+                                    <h4 class="text-white">Rating : {{i[5]}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+    
+                {% endif %}
+    
+            </div>
+        </div>
+
+        </body>
+    </html>
+    {% endblock name %}
